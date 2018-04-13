@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# 2018-04-13 v1.0.5
+/manifest.json
+/js/player.js
+/js/playlist.js
+/css/player.css
+/img/cover1.jpg
+/img/avatar1.jpg
+/img/cover2.jpg
+/img/avatar2.jpg
+/img/cover3.jpg
+/img/avatar3.jpg
+/img/cover4.jpg
+/img/avatar4.jpg
+/img/cover5.jpg
+/img/avatar5.jpg
+/img/cover6.jpg
+/img/avatar6.jpg
+/img/cover7.jpg
+/img/avatar7.jpg
+/img/avatar8.jpg
+
+NETWORK:
+*
+FALLBACK:

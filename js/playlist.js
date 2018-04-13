@@ -1,0 +1,70 @@
+playlistCallback({
+	playerName:"我的播放器",
+	coverHTML:"<p>我</p><p>的</p><p>播</p><p>放</p><p>器</p>",
+	album:[
+	{name:"专辑一",
+cover:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523614525018&di=4f5848c9936880aa2c535d0fecf32c71&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F5ab5c9ea15ce36d3d37cfe1931f33a87e950b19a.jpg",
+avatar:"http://img1.touxiang.cn/uploads/20120825/25-020525_165.jpg",
+abstract:"这是一张不存在的专辑",
+path:"http://songs.mysite.com/mp3/",//这张专辑的音乐都要在这个路径下，当然也可以留空。
+list:[
+	{name:"第一首歌",singer:"歌手一",update:1420041600000,
+	file:"song1.mp3"},
+	{name:"第二首歌",singer:"歌手一",update:1420141601000,
+	file:"song2.mp3"},
+	{name:"第三首歌",singer:"歌手一",update:1420241601000,
+	file:"song2.mp3"},
+	{name:"第四首歌",singer:"歌手一",update:1420341601000,
+	file:"song2.mp3"},
+	{name:"第五首歌",singer:"歌手一",update:1420441601000,
+	file:"song2.mp3"}
+]},{name:"专辑二",
+cover:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523622929635&di=d87e01ca911fa3636c85dca9677b15d4&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D2212139901%2C2024059731%26fm%3D214%26gp%3D0.jpg",
+avatar:"http://ucres.myzaker.com/img_upload/user_avatar/2014/5079/10156373_1418178786.jpg.210.jpg",
+abstract:"这是一张不存在的专辑",
+path:"http://songs.mysite.com/mp3/",//这张专辑的音乐都要在这个路径下，当然也可以留空。
+list:[
+	{name:"第一首歌",singer:"歌手二",update:1420041600000,
+	file:"song1.mp3"},
+	{name:"第二首歌",singer:"歌手二",update:1420141601000,
+	file:"song2.mp3"},
+	{name:"第三首歌",singer:"歌手二",update:1420241601000,
+	file:"song2.mp3"},
+	{name:"第四首歌",singer:"歌手二",update:1420341601000,
+	file:"song2.mp3"},
+	{name:"第五首歌",singer:"歌手二",update:1420441601000,
+	file:"song2.mp3"}
+]},{name:"专辑三",
+cover:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523614525018&di=a289d7a28ee33b76cbbaa9494bee00c1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fd8f9d72a6059252de167392d3f9b033b5bb5b9a2.jpg",
+avatar:"http://www.qqzhi.com/uploadpic/2015-01-15/055123530.jpg",
+abstract:"这是一张不存在的专辑",
+path:"http://songs.mysite.com/mp3/",//这张专辑的音乐都要在这个路径下，当然也可以留空。
+list:[
+	{name:"第一首歌",singer:"歌手三",update:1420041600000,
+	file:"song1.mp3"},
+	{name:"第二首歌",singer:"歌手三",update:1420141601000,
+	file:"song2.mp3"},
+	{name:"第三首歌",singer:"歌手三",update:1420241601000,
+	file:"song2.mp3"},
+	{name:"第四首歌",singer:"歌手三",update:1420341601000,
+	file:"song2.mp3"},
+	{name:"第五首歌",singer:"歌手三",update:1420441601000,
+	file:"song2.mp3"}
+]},{name:"专辑四",
+cover:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523623282365&di=8cf7bea6cd5b20808c7025d89bcdf121&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fb8014a90f603738d664e1428b91bb051f819ecb0.jpg",
+avatar:"http://img5.imgtn.bdimg.com/it/u=1009228967,1226653536&fm=27&gp=0.jpg",
+abstract:"这是一张不存在的专辑",
+path:"http://songs.mysite.com/mp3/",//这张专辑的音乐都要在这个路径下，当然也可以留空。
+list:[
+	{name:"第一首歌",singer:"歌手四",update:1420041600000,
+	file:"song1.mp3"},
+	{name:"第二首歌",singer:"歌手四",update:1420141601000,
+	file:"song2.mp3"},
+	{name:"第三首歌",singer:"歌手四",update:1420241601000,
+	file:"song2.mp3"},
+	{name:"第四首歌",singer:"歌手四",update:1420341601000,
+	file:"song2.mp3"},
+	{name:"第五首歌",singer:"歌手四",update:1420441601000,
+	file:"song2.mp3"}
+]}
+]});

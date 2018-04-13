@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<!-- <html manifest="player.manifest"> --></html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="manifest" href="manifest.json">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" sizes="57x57" href="app-icon-57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="app-icon-72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="app-icon-114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="app-icon-144.png" />
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>播放器</title>
+	<link rel="stylesheet" href="css/player.css" />
+	<style>
+
+	</style>
+</head>
+<body onhashchange="checkHash()">
+<div style="height:100%;width:100%;overflow-y: scroll;position: absolute;top:0;left:0" id="containor">
+	<div id="subjectList" class="bg">
+		<!--专题列表页-->
+		<table width="100%" height="100%" align="center">
+			<tr>
+				<td onclick=switchMode("player") style="height:60vw"><!-- 轮播图 -->
+					<DIV id="slides" style="height:60vw;background-size: cover;" class="bg fadein" onclick="playSong(escape(this.title))"><span style="position:relative;top:40vw; left:10vw;font-size: 4vw;color:white; text-shadow: 0px 0px 10px #CF2D28"></span>
+					</DIV>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table style="font-size:4vw" width="100%">
+						<tr align="center" id="topAlbumList"></tr>
+					</table>
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h1>&nbsp;最新上传</h1>
+					<table width=100% id=newUpdates></table>
+				</td>
+			</tr>
+			<tr><td><hr></td></tr>
+			<tr>
+				<td> &nbsp; <h1>专题列表</h1></td>
+			</tr>
+			<tr>
+				<td>
+					<table width=100% id="allAlbumList"></table>		
+				</td>
+			</tr>
+			<tr><td><br><br><br><br><br></td></tr>
+		</table>
+	</div>
+	<center id="cover" class="bg fadein" style="font-size:10vw;" onclick="timer=setTimeout(hideCover,0)">
+
+	</center>	
+	<div id="subjectDetail" style="width:100%;display: none;">
+		<div id="subjectBanner" style=" ;background-size: cover;background-position:center;height:60vw">
+			<span style="color:white;font-size:4vw;text-shadow:0 0 0.5vw black;font-weight: 600" onclick="history.go(-1)">&lt;返回</span><span style="float:right;color:white;font-size:6vw;text-shadow:0 0 0.5vw black;"  onclick=qrCode(escape(currentAlbum.name),'album')>⎋</span>
+			<br>
+			<div id="subjectTitle" style="font-size:6vw;color:white;text-shadow:0 0 0.5vw black;padding:2vw;font-weight: bold;"></div>
+			<br>
+			<div id="albumAbstract" style="padding-left:5vw;color:white;font-size:4vw;text-shadow:0 0 0.5vw black;font-weight: bold;width:70vw "></div>
+			<br>
+		</div>
+		<br>			
+
+		<table width="100%" style="font-size:4vw" cellpadding="1vw" id="albumSongs"><tbody></tbody></table>
+		<br><br><br><br>
+	</div>
+	<div id="QRCODE" style="width:100%;display: none;" onclick="switchBack()"></div>
+	<div id="player" style="width:100%;display: none;">
+		<img id="playerBackground" src="" style="width:100%;height:100%;filter: blur(50px);position:absolute;z-index: -1;opacity:0.3" > 
+		
+		<h2 style="float:right;color:gray" onclick=qrCode(escape(currentSong.name),'song')>分享⎋ </h2>
+		<h2 style="color:gray;" onclick=history.go(-1)>&lt;返回</h2>
+		<h1 id="songName"><center></center><marquee style="display:none"></marquee></h1><br><br>
+		<table cellpadding="0" style="width:100%">
+			<tr>
+				<td style="width:30%">
+					<img id="songCover" style="width:30vw; border-radius: 6vw;padding:3vw"> 
+				</td>
+				<td>
+					<table cellpadding="0" style="color:white;text-shadow:0px 0px 2vw #555555">
+						<tr>
+							<td colspan="2"><h2 id="albumName"></h2></td>
+						</tr>
+						<tr>
+							<td>
+								<img id=albumAvatar  class=circle-avatar>
+							</td>
+							<td>
+								<h1 id="singer"></h1>
+							</td>
+						</tr>
+						<tr><td colspan="2"><h3>2018年1月</h3></td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<br>
+						<table width=100%>
+							<tr>
+								<td id="songCurrent" style="font-size:3vw;width:8vw;">00:00</td>
+								<td align="center">
+									<input type="range" value="0" style="width:70vw" id="progressBar" min=0 max=500 step=1 onchange="dragTo(value)" defaultValue=0>
+								</td>
+								<td id="songLength"  style="font-size:3vw;width:8vw" align="right">0:00</td>
+							</tr>
+						</table>	
+						<audio id="audio" autoplay preload="metadata" oncanplaythrough="getSongInfo()" onpause="setPaused()" onplay="setPlay()">
+							<source id="mp3Source"></source>
+							<!--source id="oggSource"></source-->
+						</audio>
+			</td></tr>
+			<tr><td colspan="2" align="center">
+			<nobr style="font-size:13vw">
+			<span id="btnPreviousSong" onclick="playNext(-1)">⏮</span>	
+			&nbsp;
+			<span onclick="if(audio.paused)audio.play();else audio.pause();" id=btnPlay>⏯</span> 
+			&nbsp;
+			<span id="btnNextSong"onclick="playNext(1)">⏭</span>
+			</nobr>
+			<p>
+				<select style="font-size:6vw;" onchange="audio.playbackRate=this.value">
+				<option value=0.75>0.75倍速</option>
+				<option value=1 selected>1倍速</option>
+				<option value=1.2>1.2倍速</option>
+				<option value=1.5>1.5倍速</option>
+				<option value=2>2倍速</option>
+			</select>
+			&nbsp;
+			<span id="btnLoopType" onclick="changeLoopType(1)" style="font-size:6vw;"></span>
+			
+			
+			</p>
+			</td></tr>
+			<tr><td style="font-size:5vw" colspan="2" id=albumInfo></td></tr>
+			<tr><td colspan="2" id=albumDetail></td></tr>
+		</table>
+		
+	</div>
+	</div>
+	<center id="floatPlayer" onclick="playSong()">
+		<span style="float:left;">
+			&nbsp; <img id=floatAvatar class=circle-avatar> &nbsp;
+		</span> &nbsp;
+		<span style="display:inline-block;float:left;width:70vw">
+			<div id=floatSongName style="color:white;font-size:5vw; width:100%; text-overflow:ellipsis;overflow:hidden;white-space: nowrap;text-align: left;"></div>
+			<div id=floatAlbumName style="color:whitesmoke;font-size:1vw;text-align: left;"></div>
+		</span>
+		<div style="width:100%; bottom:0;position: absolute;"><div style="float:right;height:1vw;background-color:yellow;width:50%;bottom:1vw" id="songCurrentBar"></div></div>
+	</center>
+
+<script src="js/player.js"></script>
+<script src="js/playlist.js" async></script>
+</body>
+
+</html>
